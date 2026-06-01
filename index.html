@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTECH M.E. III SEM</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+.header {
+    position: relative;
+    background-color: #ffc107;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+/* Round Buttons */
+.cms-btn,
+.books-btn {
+    position: absolute;
+    top: 5px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    font-size: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.cms-btn {
+    left: 8px;
+}
+
+.books-btn {
+    left: 48px;
+}
+
+.cms-btn:hover,
+.books-btn:hover {
+    transform: scale(1.05);
+}
+
+.header-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: move 10s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab {
+    margin: 0 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+    background-color: #000;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.tab.active {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.content-list {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    background-color: white;
+    padding: 10px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.item-number {
+    width: 30px;
+    height: 30px;
+    background-color: #ffc107;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.item-title {
+    font-size: 1em;
+    color: #333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+    <button class="cms-btn"
+        onclick="window.location.href='https://cmsmarks.vercel.app/'">
+        CMS
+    </button>
+
+    <button class="books-btn"
+        onclick="window.location.href='https://devdk-code.github.io/BookBank/'">
+        BOOKS
+    </button>
+
+    <div class="header-text">
+        BTECH <i>M.E. 3rd sem</i>
+    </div>
+
+</div>
+
+<div class="tabs">
+    <div class="tab active">Content</div>
+    <div class="tab">Description</div>
+    <div class="tab">FAQ</div>
+    <div class="tab">Fbt</div>
+</div>
+
+    <div class="content-list">
+        
+        <div class="item" onclick="navigateTo('EEM301.html')">
+            <div class="item-number">1</div>
+            <div class="item-title"> EEM301 <i>BASIC ELECTRONICS</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('EEM302.html')">
+            <div class="item-number">2</div>
+            <div class="item-title">EEM302 <i>BASIC ELECTRONICS LAB.</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('EEM303.html')">
+            <div class="item-number">3</div>
+            <div class="item-title">EEM303 <i>DATA STRUCTURES</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('eem304.html')">
+            <div class="item-number">4</div>
+            <div class="item-title">EEM304 <i>C PROGRAMMING LAB.</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('MEM301.html')">
+            <div class="item-number">5</div>
+            <div class="item-title">MEM301 <i>ENGINEERING MECHANICS II</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('MEM303.html')">
+            <div class="item-number">6</div>
+            <div class="item-title">MEM303 <i>MANUFACTURING PROCESSESS II</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('MEM304.html')">
+            <div class="item-number">7</div>
+            <div class="item-title">MEM304 <i>APPLIED THERMODYNAMICS</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('MEM305.html')">
+            <div class="item-number">8</div>
+            <div class="item-title">MEM305 <i>THERMAL ENGINEERING LAB.</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('mem306.html')">
+            <div class="item-number">9</div>
+            <div class="item-title">MEM306 <i>ENGINEERING DRAWING II</i></div>
+        </div>
+        
+        <div class="item" onclick="navigateTo('MAM381.html')">
+            <div class="item-number">10</div>
+            <div class="item-title">MAM381 <i>ENGINEERING MATHEMATICS III</i></div>
+        </div>
+        <div class="item" onclick="navigateTo('ENH381.html')">
+            <div class="item-number">11</div>
+            <div class="item-title">ENH381 <i>ENGLISH III</i></div>
+        </div>
+        
+    </div>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+    });
+});
+
+function navigateTo(url) {
+    window.location.href = url;
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    
+    .header {
+      background-color: #ffc107;
+      color: black;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+      overflow: hidden;
+    }
+    
+    .header-text {
+      display: inline-block;
+      white-space: nowrap;
+      animation: move 10s linear infinite;
+    }
+    
+    @keyframes move {
+      0% {
+        transform: translateX(100%);
+      }
+      
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #fff;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab {
+      margin: 0 10px;
+      padding: 5px 15px;
+      cursor: pointer;
+      background-color: #000;
+      color: white;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+    
+    .tab.active {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #000;
+    }
+    
+    .content-list {
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .item {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      background-color: white;
+      padding: 10px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    
+    .item-number {
+      width: 30px;
+      height: 30px;
+      background-color: #ffc107;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    
+    .item-title {
+      font-size: 1em;
+      color: #333;
+    }
+    
+    .sub-links {
+      display: none;
+      margin-left: 40px;
+      margin-bottom: 10px;
+    }
+    
+    .sub-links a {
+      display: block;
+      background: #fff;
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 5px;
+      text-decoration: none;
+      color: black;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sub-links a:hover {
+      background-color: #ffc107;
+    }
+    
+    @media (max-width: 400px) {
+      .content-list {
+        padding: 10px;
+      }
+      
+      .item {
+        padding: 8px;
+      }
+      
+      .item-number {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9em;
+      }
+      
+      .item-title {
+        font-size: 0.9em;
+      }
+    }
+  </style>
