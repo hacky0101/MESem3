@@ -13,27 +13,30 @@ body {
     background-color: #f4f4f4;
 }
 
-.hyper {
-    color: inherit;
-    text-decoration: none;
-    font: inherit;
-}
-
 /* Header */
 .header {
     position: relative;
     background-color: #ffc107;
     color: black;
     text-align: center;
-    padding: 10px;
+    padding: 10px 70px;
     font-size: 1.2em;
     font-weight: bold;
     overflow: hidden;
 }
 
+
+.hyper {
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+}
+
+
 /* Round Buttons */
 .cms-btn,
-.books-btn {
+.books-btn,
+.link-btn {
     position: absolute;
     top: 5px;
     width: 32px;
@@ -46,6 +49,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     padding: 0;
+    z-index: 100;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
@@ -57,11 +61,17 @@ body {
     left: 48px;
 }
 
+.link-btn {
+    right: 8px;
+}
+
 .cms-btn:hover,
-.books-btn:hover {
+.books-btn:hover,
+.link-btn:hover {
     transform: scale(1.05);
 }
 
+/* Moving Header Text */
 .header-text {
     display: inline-block;
     white-space: nowrap;
@@ -77,6 +87,7 @@ body {
     }
 }
 
+/* Tabs */
 .tabs {
     display: flex;
     justify-content: center;
@@ -102,6 +113,7 @@ body {
     border: 1px solid #000;
 }
 
+/* Content List */
 .content-list {
     padding: 20px;
     max-width: 400px;
@@ -137,7 +149,28 @@ body {
     font-size: 1em;
     color: #333;
 }
+
+@media (max-width: 400px) {
+    .content-list {
+        padding: 10px;
+    }
+
+    .item {
+        padding: 8px;
+    }
+
+    .item-number {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9em;
+    }
+
+    .item-title {
+        font-size: 0.9em;
+    }
+}
 </style>
+
 </head>
 
 <body>
@@ -145,18 +178,24 @@ body {
 <div class="header">
 
     <button class="cms-btn"
-        onclick="window.location.href='https://cmsmarks.vercel.app/'">
+        onclick="window.location.href='cms.html'">
         CMS
     </button>
 
     <button class="books-btn"
-        onclick="window.location.href='https://devdk-code.github.io/BookBank/'">
-        BOOKS
+        onclick="window.location.href='books.html'">
+        Books
+    </button>
+
+    <button class="link-btn"
+        onclick="window.location.href='link.html'">
+        🔗
     </button>
 
     <div class="header-text">
         BTECH <i>M.E. 3rd sem</i>
     </div>
+
 </div>
 
 <div class="tabs">
@@ -241,4 +280,3 @@ function navigateTo(url) {
 
 </body>
 </html>
-
