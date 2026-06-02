@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Link Changer Pro</title>
+<!-- Favicon: chain-link emoji as SVG data URI -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  /* ===== CSS VARIABLES ===== */
+  :root {
+    --bg-start:   #0d0d1a;
+    --bg-mid:     #111127;
+    --bg-end:     #0a0a18;
+    --card-bg:    rgba(255,255,255,0.04);
+    --card-border:rgba(255,255,255,0.08);
+    --input-bg:   rgba(255,255,255,0.05);
+    --input-border:rgba(255,255,255,0.12);
+    --accent:     #6c63ff;
+    --accent2:    #ff6584;
+    --accent3:    #43e97b;
+    --text:       #f0f0ff;
+    --muted:      #7a7a9d;
+    --error:      #ff5c5c;
+    --success:    #43e97b;
+    --radius:     14px;
+    --radius-sm:  8px;
+    --shadow:     0 20px 60px rgba(0,0,0,0.5);
+    --transition: 0.22s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ===== RESET ===== */
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  /* ===== BODY / BACKGROUND ===== */
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px 60px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Decorative blobs */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::before {
+    width: 500px; height: 500px;
+    background: rgba(108,99,255,0.12);
+    top: -100px; left: -100px;
+  }
+  body::after {
+    width: 400px; height: 400px;
+    background: rgba(255,101,132,0.08);
+    bottom: -80px; right: -80px;
+  }
+
+  /* ===== WRAPPER ===== */
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 660px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  /* ===== HEADER ===== */
+  .header { text-align: center; padding: 10px 0 6px; }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .logo-icon {
+    width: 46px; height: 46px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 12px;
+    display: grid; place-items: center;
+    font-size: 22px;
+    box-shadow: 0 8px 24px rgba(108,99,255,0.4);
+  }
+
+  .logo-text {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #a78bfa, #6c63ff, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== CARD ===== */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+  }
+
+  /* ===== SECTION LABEL ===== */
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  /* ===== INPUT AREA ===== */
+  .input-wrap {
+    position: relative;
+    display: flex;
+    gap: 10px;
+  }
+
+  #linkInput {
+    flex: 1;
+    background: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    min-width: 0;
+  }
+  #linkInput::placeholder { color: var(--muted); }
+  #linkInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(108,99,255,0.18);
+  }
+
+  /* Clear button inside input row */
+  #clearBtn {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    padding: 0 14px;
+    color: var(--muted);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #clearBtn:hover { background: rgba(255,92,92,0.15); border-color: var(--error); color: var(--error); }
+
+  /* ===== CONVERT BUTTON ===== */
+  #convertBtn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    box-shadow: 0 6px 24px rgba(108,99,255,0.35);
+  }
+  #convertBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(108,99,255,0.5);
+  }
+  #convertBtn:active:not(:disabled) { transform: translateY(0); }
+  #convertBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+  /* Shimmer effect on button */
+  #convertBtn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+  }
+  #convertBtn:hover::after { left: 150%; }
+
+  /* Button spinner */
+  .btn-inner { display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+  .spinner {
+    width: 18px; height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    height: 1px;
+    background: var(--card-border);
+    margin: 6px 0 20px;
+  }
+
+  /* ===== ERROR MESSAGE ===== */
+  #errorMsg {
+    display: none;
+    background: rgba(255,92,92,0.1);
+    border: 1px solid rgba(255,92,92,0.25);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: var(--error);
+    margin-top: 14px;
+    animation: shake 0.35s ease;
+  }
+  #errorMsg.show { display: flex; align-items: center; gap: 8px; }
+
+  /* ===== RESULTS CARD ===== */
+  #resultsCard {
+    display: none;
+    animation: fadeUp 0.4s ease both;
+  }
+  #resultsCard.show { display: block; }
+
+  /* Detected type badge */
+  .type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .type-badge.scribd  { background: rgba(67,233,123,0.12); color: var(--accent3); border: 1px solid rgba(67,233,123,0.25); }
+  .type-badge.youtube { background: rgba(255,101,132,0.12); color: var(--accent2); border: 1px solid rgba(255,101,132,0.25); }
+
+  /* ===== RESULT ITEMS ===== */
+  .result-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .result-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: border-color var(--transition), background var(--transition);
+  }
+  .result-item:hover { border-color: rgba(108,99,255,0.35); background: rgba(108,99,255,0.06); }
+
+  .result-left { min-width: 0; flex: 1; }
+
+  .result-source {
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  /* Clickable link */
+  .result-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: #818cf8;
+    word-break: break-all;
+    text-decoration: none;
+    transition: color var(--transition);
+    display: block;
+  }
+  .result-url:hover { color: #a5b4fc; text-decoration: underline; }
+
+  .result-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+  /* Open & Copy buttons */
+  .btn-action {
+    background: transparent;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 7px 12px;
+    color: var(--muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .btn-action:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(108,99,255,0.1);
+  }
+  .btn-action.copied {
+    border-color: var(--success);
+    color: var(--success);
+    background: rgba(67,233,123,0.1);
+  }
+
+  /* ===== TOAST NOTIFICATION ===== */
+  #toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(30,30,50,0.95);
+    border: 1px solid rgba(67,233,123,0.3);
+    border-radius: 99px;
+    padding: 10px 22px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--success);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 8px;
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  footer span { color: var(--accent2); font-weight: 600; }
+  footer a { color: var(--muted); text-decoration: none; }
+
+  /* ===== KEYFRAMES ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin   { to { transform: rotate(360deg); } }
+  @keyframes shake  {
+    0%,100% { transform: translateX(0); }
+    25%     { transform: translateX(-6px); }
+    75%     { transform: translateX(6px); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 480px) {
+    .card { padding: 20px 16px 18px; }
+    .logo-text { font-size: 1.4rem; }
+    .result-item { flex-direction: column; align-items: flex-start; }
+    .result-actions { width: 100%; justify-content: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== MAIN WRAPPER ===== -->
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">🔗</div>
+      <span class="logo-text">Link Changer Pro</span>
+    </div>
+    <p>Convert Scribd &amp; YouTube links to alternative viewers instantly</p>
+  </header>
+
+  <!-- INPUT CARD -->
+  <div class="card">
+    <div class="section-label">Paste your link</div>
+
+    <div class="input-wrap">
+      <input
+        type="text"
+        id="linkInput"
+        placeholder="https://www.scribd.com/document/... or youtube.com/..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="clearBtn" title="Clear input">✕</button>
+    </div>
+
+    <!-- Error message -->
+    <div id="errorMsg">
+      <span>⚠</span>
+      <span id="errorText">Invalid or unsupported link.</span>
+    </div>
+
+    <!-- Convert button -->
+    <button id="convertBtn">
+      <div class="btn-inner">
+        <div class="spinner" id="spinner"></div>
+        <span id="btnLabel">⚡ Convert Link</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- RESULTS CARD -->
+  <div class="card" id="resultsCard">
+    <div class="section-label">Generated Links</div>
+    <div id="typeBadge"></div>
+    <div class="divider"></div>
+    <div class="result-list" id="resultList"></div>
+  </div>
+
+</div><!-- end .wrapper -->
+
+<!-- FOOTER -->
+<footer>
+  <p>Made with ❤️ by <span>DK</span> &nbsp;·&nbsp; <a href="#">Link Changer Pro</a></p>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">✓ Copied to clipboard!</div>
+
+
+<script>
+  // ============================================================
+  //  ELEMENT REFERENCES
+  // ============================================================
+  const linkInput   = document.getElementById('linkInput');
+  const clearBtn    = document.getElementById('clearBtn');
+  const convertBtn  = document.getElementById('convertBtn');
+  const spinner     = document.getElementById('spinner');
+  const btnLabel    = document.getElementById('btnLabel');
+  const errorMsg    = document.getElementById('errorMsg');
+  const errorText   = document.getElementById('errorText');
+  const resultsCard = document.getElementById('resultsCard');
+  const typeBadge   = document.getElementById('typeBadge');
+  const resultList  = document.getElementById('resultList');
+  const toast       = document.getElementById('toast');
+
+  let toastTimer = null;
+
+  // ============================================================
+  //  DETECT LINK TYPE
+  //  Returns 'scribd' | 'youtube' | null
+  // ============================================================
+  function detectType(url) {
+    try {
+      const u = new URL(url);
+      const host = u.hostname.replace(/^www\./, '');
+      if (host === 'scribd.com') return 'scribd';
+      if (host === 'youtube.com' || host === 'youtu.be' || host === 'm.youtube.com') return 'youtube';
+    } catch { /* invalid URL */ }
+    return null;
+  }
+
+  // ============================================================
+  //  SCRIBD CONVERTER
+  //  Handles both URL formats:
+  //    scribd.com/document/{id}/{title}
+  //    scribd.com/doc/{id}/{title}
+  // ============================================================
+  function convertScribd(url) {
+    try {
+      const u    = new URL(url);
+      const segs = u.pathname.split('/').filter(Boolean);
+      // Accept both 'document' and 'doc' as the first segment
+      if (segs[0] !== 'document' && segs[0] !== 'doc') return null;
+      const id    = segs[1];
+      const title = segs[2] || 'document';
+      if (!id) return null;
+      const path = `${id}/${title}`;
+      return [
+        { source: 'Scribd vPDFs',        url: `https://scribd.vpdfs.com/doc/${path}` },
+        { source: 'Scribd vDownloaders', url: `https://scribd.vdownloaders.com/doc/${path}` },
+      ];
+    } catch { return null; }
+  }
+
+  // ============================================================
+  //  YOUTUBE VIDEO ID EXTRACTOR
+  //  Handles: watch?v=, youtu.be/, /shorts/, m.youtube.com
+  // ============================================================
+  function extractYouTubeId(url) {
+    try {
+      const u    = new URL(url);
+      const host = u.hostname.replace(/^www\./, '').replace(/^m\./, '');
+      // youtu.be/{id}
+      if (host === 'youtu.be') return u.pathname.split('/')[1] || null;
+      // youtube.com/shorts/{id}
+      if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/shorts/')[1].split('?')[0] || null;
+      // youtube.com/watch?v={id}
+      const v = u.searchParams.get('v');
+      return v || null;
+    } catch { return null; }
+  }
+
+  // ============================================================
+  //  YOUTUBE CONVERTER
+  // ============================================================
+  function convertYouTube(url) {
+    const id = extractYouTubeId(url);
+    if (!id) return null;
+    return [
+      { source: 'SosYouTube',  url: `https://www.sosyoutube.com/watch?v=${id}` },
+      { source: 'VidsYouTube', url: `https://www.vidsyoutube.com/watch?v=${id}` },
+    ];
+  }
+
+  // ============================================================
+  //  SHOW / HIDE HELPERS
+  // ============================================================
+  function showError(msg) {
+    errorText.textContent = msg;
+    errorMsg.classList.add('show');
+  }
+  function hideError() {
+    errorMsg.classList.remove('show');
+  }
+
+  function showToast(msg = '✓ Copied to clipboard!') {
+    toast.innerHTML = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  // ============================================================
+  //  RENDER RESULTS
+  // ============================================================
+  function renderResults(links, type) {
+    // Badge
+    typeBadge.innerHTML = type === 'scribd'
+      ? `<span class="type-badge scribd">📄 Scribd Link Detected</span>`
+      : `<span class="type-badge youtube">▶ YouTube Link Detected</span>`;
+
+    // Build result items
+    resultList.innerHTML = '';
+    links.forEach(({ source, url }) => {
+      const item = document.createElement('div');
+      item.className = 'result-item';
+      item.innerHTML = `
+        <div class="result-left">
+          <div class="result-source">${source}</div>
+          <a class="result-url" href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>
+        </div>
+        <div class="result-actions">
+          <button class="btn-action open-btn" data-url="${url}">↗ Open</button>
+          <button class="btn-action copy-btn" data-url="${url}">⧉ Copy</button>
+        </div>
+      `;
+      resultList.appendChild(item);
+    });
+
+    resultsCard.classList.add('show');
+  }
+
+  // ============================================================
+  //  COPY HANDLER (event delegation on resultList)
+  // ============================================================
+  resultList.addEventListener('click', (e) => {
+    // Copy button
+    const copyBtn = e.target.closest('.copy-btn');
+    if (copyBtn) {
+      const url = copyBtn.dataset.url;
+      navigator.clipboard.writeText(url).then(() => {
+        copyBtn.textContent = '✓ Copied';
+        copyBtn.classList.add('copied');
+        showToast('✓ Copied to clipboard!');
+        setTimeout(() => {
+          copyBtn.textContent = '⧉ Copy';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('✓ Copied!');
+      });
+    }
+
+    // Open button
+    const openBtn = e.target.closest('.open-btn');
+    if (openBtn) {
+      window.open(openBtn.dataset.url, '_blank', 'noopener,noreferrer');
+    }
+  });
+
+  // ============================================================
+  //  MAIN CONVERT FUNCTION
+  // ============================================================
+  function handleConvert() {
+    const raw = linkInput.value.trim();
+    hideError();
+    resultsCard.classList.remove('show');
+
+    // Empty check
+    if (!raw) {
+      showError('Please paste a link first.');
+      return;
+    }
+
+    // Auto-add protocol if missing
+    const link = raw.startsWith('http') ? raw : 'https://' + raw;
+
+    // Detect type
+    const type = detectType(link);
+    if (!type) {
+      showError('Invalid or unsupported link. Supported: Scribd & YouTube.');
+      return;
+    }
+
+    // Loading animation
+    convertBtn.disabled = true;
+    spinner.style.display = 'block';
+    btnLabel.textContent = 'Converting...';
+
+    // Simulate a short processing delay for UX polish
+    setTimeout(() => {
+      let links = null;
+      if (type === 'scribd')  links = convertScribd(link);
+      if (type === 'youtube') links = convertYouTube(link);
+
+      // Reset button state
+      convertBtn.disabled = false;
+      spinner.style.display = 'none';
+      btnLabel.textContent = '⚡ Convert Link';
+
+      if (!links) {
+        showError('Could not parse this link. Please check the URL format.');
+        return;
+      }
+
+      renderResults(links, type);
+    }, 600); // 600ms "loading" for UX polish
+  }
+
+  // ============================================================
+  //  CLEAR BUTTON
+  // ============================================================
+  clearBtn.addEventListener('click', () => {
+    linkInput.value = '';
+    hideError();
+    resultsCard.classList.remove('show');
+    linkInput.focus();
+  });
+
+  // ============================================================
+  //  EVENT LISTENERS
+  // ============================================================
+  convertBtn.addEventListener('click', handleConvert);
+
+  // Allow Enter key to trigger convert
+  linkInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleConvert();
+  });
+
+  // Auto-detect as user types/pastes (debounced)
+  let debounceTimer;
+  linkInput.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    hideError();
+    // Only auto-convert if it looks like a complete URL
+    debounceTimer = setTimeout(() => {
+      const val = linkInput.value.trim();
+      if (val.length > 15 && (val.includes('scribd.com') || val.includes('youtube.com') || val.includes('youtu.be'))) {
+        handleConvert();
+      }
+    }, 700);
+  });
+</script>
+
+</body>
+</html>
