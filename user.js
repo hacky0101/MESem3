@@ -52,6 +52,7 @@ function trackPageView() {
 
 📌 <b>Title:</b> ${document.title}
 📄 <b>Page:</b> ${currentPage}
+📱 Device: ${navigator.userAgent}
 🔗 <b>URL:</b> ${window.location.href}
 🌐 <b>IP:</b> ${userIP}
 📍 <b>Location:</b> ${userLocation}
