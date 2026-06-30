@@ -2,12 +2,6 @@
 
 const BOT_TOKEN = "8597216892:AAH4S636lc68JIPzuZV67N3ENfVCjxY-Ans"; 
 const CHAT_ID = "5727689002"; 
-// tracker.js - Fixed Version
-// tracker.js - Final Fixed Version
-// test-tracker.js  ← Yeh file banao
-
-const BOT_TOKEN = "8597216892:AAH4S636lc68JIPzuZV67N3ENfVCjxY-Ans"; 
-const CHAT_ID = "5727689002"; 
 // user.js
 
 
