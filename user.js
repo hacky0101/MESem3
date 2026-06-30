@@ -4,87 +4,112 @@ const BOT_TOKEN = "8597216892:AAH4S636lc68JIPzuZV67N3ENfVCjxY-Ans";
 const CHAT_ID = "5727689002"; 
 // tracker.js - Fixed Version
 // tracker.js - Final Fixed Version
+// test-tracker.js  ← Yeh file banao
+
+const BOT_TOKEN = "8597216892:AAH4S636lc68JIPzuZV67N3ENfVCjxY-Ans"; 
+const CHAT_ID = "5727689002"; 
+// user.js
 
 
-let sessionStart = Date.now();
+
 let currentPage = window.location.pathname;
 let pageStartTime = Date.now();
-let userIP = "N/A";
-let userLocation = "N/A";
+let userIP = "Detecting...";
+let userLocation = "Detecting...";
 
-// IP + Location
+// Get IP & Location
 async function getIPAndLocation() {
-    try {
-        const res = await fetch('https://api.ipapi.is/?q=json');
-        const data = await res.json();
-        
-        if (data.ip) userIP = data.ip;
-        if (data.location) {
-            const city = data.location.city || '';
-            const country = data.location.country || '';
-            userLocation = city && country ? `${city}, ${country}` : (country || city || "Unknown");
-        }
-    } catch (e) {
-        try {
-            const res2 = await fetch('https://ipapi.co/json/');
-            const data2 = await res2.json();
-            userIP = data2.ip || "N/A";
-            userLocation = `${data2.city || ''}, ${data2.country_name || ''}`.replace(/^,\s*/, '');
-        } catch {}
-    }
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    const data = await res.json();
+    
+    userIP = data.ip || "N/A";
+    
+    userLocation = [
+      data.city,
+      data.region,
+      data.country_name
+    ].filter(Boolean).join(", ");
+    
     trackPageView();
+  } catch (err) {
+    console.error(err);
+    userIP = "Unknown";
+    userLocation = "Unknown";
+    trackPageView();
+  }
 }
 
-// Send Message
+// Send Telegram Message
 function sendAlert(message) {
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: message,
-            parse_mode: "HTML"
-        })
-    }).catch(() => {});
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message,
+      parse_mode: "HTML"
+    })
+  }).catch(console.error);
 }
 
-// Fixed Page View
+// Page Visit
 function trackPageView() {
-    const isMobile = window.innerWidth < 768;
-    const device = isMobile ? "📱 Mobile" : "💻 Desktop";
-
-    const message = `
+  const message = `
 🔴 <b>New Visitor</b>
 
 📌 <b>Title:</b> ${document.title}
 📄 <b>Page:</b> ${currentPage}
 🔗 <b>URL:</b> ${window.location.href}
+📱 Device: ${navigator.userAgent}
 🌐 <b>IP:</b> ${userIP}
 📍 <b>Location:</b> ${userLocation}
-🖥️ <b>Device:</b> \( {device} ( \){window.innerWidth} × ${window.innerHeight})
-⏰ <b>Time:</b> ${new Date().toLocaleString('en-IN')}
-↩️ <b>Referrer:</b> ${document.referrer || 'Direct'}
-    `.trim();
-
-    sendAlert(message);
-    pageStartTime = Date.now();
+⏰ <b>Time:</b> ${new Date().toLocaleString("en-IN")}
+↩️ <b>Referrer:</b> ${document.referrer || "Direct"}
+  `.trim();
+  
+  sendAlert(message);
 }
 
-// Click Tracking
-document.addEventListener('click', (e) => {
-    if (e.target.closest('button')) {
-        const text = e.target.textContent.trim() || "Button";
-        sendAlert(`🖱️ Button Clicked: <b>${text}</b>`);
-    }
+// Leave Page
+window.addEventListener("beforeunload", () => {
+  const timeSpent = Math.round((Date.now() - pageStartTime) / 1000);
+  
+  if (timeSpent > 5) {
+    sendAlert(
+      `⏱️ Left <b>${document.title}</b> after <b>${timeSpent}</b> seconds`
+    );
+  }
 });
 
-// Page Leave
-window.addEventListener('beforeunload', () => {
+// Internal Navigation
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a");
+  
+  if (link && link.hostname === location.hostname) {
     const timeSpent = Math.round((Date.now() - pageStartTime) / 1000);
-    if (timeSpent > 5) {
-        sendAlert(`⏱️ Left <b>\( {document.title}</b> after <b> \){timeSpent}</b> seconds`);
-    }
+    
+    sendAlert(
+      `➡️ <b>${document.title}</b> → ${link.textContent.trim() || link.pathname} (${timeSpent}s)`
+    );
+  }
+});
+
+// Tab Switch
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    const timeSpent = Math.round((Date.now() - pageStartTime) / 1000);
+    
+    sendAlert(
+      `👀 Tab switched on <b>${document.title}</b> (${timeSpent}s)`
+    );
+  } else {
+    pageStartTime = Date.now();
+  }
 });
 
 // Start
 getIPAndLocation();
+
