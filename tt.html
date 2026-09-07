@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>II SEM B.TECH Timetable</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .current-date {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .current-date h3 {
+            color: #667eea;
+            font-size: 18px;
+        }
+        
+        .current-date span {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .day-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .day-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .day-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        .day-btn.current {
+            background: #d4edda;
+            color: #155724;
+            border-color: #28a745;
+        }
+        
+        .day-btn.active {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .lecture-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .lecture-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .lecture-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .lecture-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+        }
+        
+        .lecture-info {
+            flex: 1;
+        }
+        
+        .lecture-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .lecture-time {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        .lecture-details {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+        }
+        
+        .detail-icon {
+            color: #667eea;
+        }
+        
+        .notice {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .notice strong {
+            color: #856404;
+        }
+        
+        .homework-form {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .homework-form h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-add {
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-add:hover {
+            background: #5568d3;
+        }
+        
+        .homework-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 5px solid #ff9800;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .homework-card.completed {
+            opacity: 0.6;
+            border-color: #4caf50;
+        }
+        
+        .homework-card.overdue {
+            background: #ffebee;
+            border-color: #f44336;
+        }
+        
+        .homework-header {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .homework-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        
+        .homework-content {
+            flex: 1;
+        }
+        
+        .homework-subject {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .homework-subject.completed {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .homework-subject.overdue {
+            color: #f44336;
+        }
+        
+        .overdue-badge {
+            color: #f44336;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        .homework-task {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .homework-task.overdue {
+            color: #f44336;
+        }
+        
+        .homework-due {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .homework-due.overdue {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        .btn-delete {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-delete:hover {
+            background: #d32f2f;
+        }
+        
+        .no-lectures {
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            color: #999;
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 1.5em;
+            }
+            
+            .day-selector {
+                gap: 5px;
+            }
+            
+            .day-btn {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+            
+            .lecture-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 DEI FACULTY OF ENGINEERING</h1>
+            <p><strong>II SEM B.TECH - Section B</strong></p>
+            <p>Room: LT1 | Week: 29.12.2025</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('timetable')">📅 Timetable</button>
+            <button class="tab-btn" onclick="switchTab('homework')">📚 Homework</button>
+        </div>
+        
+        <!-- Timetable Tab -->
+        <div id="timetable" class="tab-content active">
+            <div class="current-date">
+                <h3>📅 Today is: <span id="currentDay"></span></h3>
+                <span id="currentDate"></span>
+            </div>
+            
+            <div class="day-selector">
+                <button class="day-btn" onclick="selectDay('MON')">MON</button>
+                <button class="day-btn" onclick="selectDay('TUE')">TUE</button>
+                <button class="day-btn" onclick="selectDay('WED')">WED</button>
+                <button class="day-btn" onclick="selectDay('THU')">THU</button>
+                <button class="day-btn" onclick="selectDay('FRI')">FRI</button>
+                <button class="day-btn" onclick="selectDay('SAT')">SAT</button>
+            </div>
+            
+            <div id="lecturesContainer"></div>
+            
+            <div class="notice">
+                <strong>⚠️ Important Notice:</strong> Students will go to Anupam Upwan Yamuna Teere at 2:30 PM
+            </div>
+        </div>
+        
+        <!-- Homework Tab -->
+        <div id="homework" class="tab-content">
+            <div class="homework-form">
+                <h2>➕ Add New Homework</h2>
+                <div class="form-group">
+                    <input type="text" id="hwSubject" placeholder="Subject (e.g., PHM 281)">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="hwTask" placeholder="Task Description">
+                </div>
+                <div class="form-group">
+                    <input type="date" id="hwDueDate">
+                </div>
+                <button class="btn-add" onclick="addHomework()">Add Homework</button>
+            </div>
+            
+            <div id="homeworkContainer"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Timetable Data
+        // Teacher ki image URL yaha add karo
+      const timetable = {
+    MON: [
+        { time: '7:00-7:55', subject: 'EGC 381', teacher: 'Rajesh', room: '_', image: 'https://via.placeholder.com/80/95A5A6/ffffff?text=EGC' },
+        { time: '7:55-8:50', subject: 'MEM 303 Manufacturing Process II', teacher: 'Prof. GD', room: 'SOE H1', image: '.jpegGD' },
+        { time: '8:50-9:45', subject: 'EEM 301 Basic Electronics ', teacher: 'Prof. VS', room: 'LT2', image: 'https://via.placeholder.com/80/3498DB/ffffff?text=VS' },
+        { time: '10:30-11:25', subject: 'EEM 304 C Language Lab', teacher: 'Prof. Atul Dayal ', room: 'CS Lab', image: 'https://via.placeholder.com/80/2ECC71/ffffff?text=TK' },
+        { time: '11:25-12:20', subject: 'EEM 304 C Language Lab', teacher: 'Prof. TK', room: 'CS Lab', image: 'https://via.placeholder.com/80/2ECC71/ffffff?text=TK' },
+        { time: '12:20-1:15', subject: 'EEM 302 BE Lab  / MEM 305 Thermal Lab', teacher: 'Prof. RKC / Dr. MD', room: 'BE Lab / Thermal Lab', image: 'https://via.placeholder.com/80/C0392B/ffffff?text=Lab' },
+        { time: '1:15-2:10', subject: 'EEM 302 / MEM 305 BE Lab / Thermal Lab', teacher: 'Prof. RKC / Dr. MD', room: 'BE Lab / Thermal Lab', image: 'https://via.placeholder.com/80/C0392B/ffffff?text=Lab' },
+        { time: '2:10-3:05', subject: 'ENH 381', teacher: 'Prof. Shashi', room: 'DES Block', image: 'https://via.placeholder.com/80/8E44AD/ffffff?text=ENH' }
+    ],
+    TUE: [
+        { time: '8:50-9:45', subject: 'EEM 301 Basic Elec. Eng.', teacher: 'Prof. VS', room: 'LT2', image: 'https://via.placeholder.com/80/3498DB/ffffff?text=VS' },
+        { time: '10:30-11:25', subject: 'MEM 301 Eng. Drawing', teacher: 'Prof. ASHARMA', room: 'SOE H1', image: '.jpegAS' },
+        { time: '11:25-12:20', subject: 'MEM 311 Fluid Mechanics', teacher: 'Prof. ASAHAI', room: 'SOE H1', image: 'https://via.placeholder.com/80/16A085/ffffff?text=AH' },
+        { time: '12:20-1:15', subject: 'MEM 312 Hydraulics Lab', teacher: 'Prof. ASAHAI', room: 'Hyd Lab', image: 'https://via.placeholder.com/80/C0392B/ffffff?text=Lab' },
+        { time: '1:15-2:10', subject: 'MEM 312 Hydraulics Lab', teacher: 'Prof. ASAHAI', room: 'Hyd Lab', image: 'https://via.placeholder.com/80/C0392B/ffffff?text=Lab' },
+        { time: '2:10-3:05', subject: 'ENH 381', teacher: 'Prof. Shashi', room: 'DES Block', image: 'https://via.placeholder.com/80/8E44AD/ffffff?text=ENH' }
+    ],
+    WED: [
+        { time: '7:55-8:50', subject: 'MEM 312 Fluid Mechanics', teacher: 'Prof. ASAHAI', room: '—', image: 'https://via.placeholder.com/80/16A085/ffffff?text=AH' },
+        { time: '8:50-9:45', subject: 'EEM 301 Basic Elec. Eng.', teacher: 'Prof. VS', room: 'SOE H1', image: 'https://via.placeholder.com/80/3498DB/ffffff?text=VS' },
+        { time: '10:30-11:25', subject: 'MEM 301 Eng. Drawing', teacher: 'Prof. ASHARMA', room: 'SOE H1', image: '.jpegAS' },
+        { time: '11:25-12:20', subject: 'MEM 311 Fluid Mechanics', teacher: 'Prof. ASAHAI', room: 'SOE H1', image: 'https://via.placeholder.com/80/16A085/ffffff?text=AH' },
+        { time: '1:15-2:10', subject: 'MAM 381', teacher: '—', room: 'AH', image: 'https://via.placeholder.com/80/F39C12/ffffff?text=MAM' },
+        { time: '2:10-3:05', subject: 'EEM 303 Elec. Machines', teacher: 'Prof. TK', room: 'R7', image: 'https://via.placeholder.com/80/D35400/ffffff?text=TK' }
+    ],
+    THU: [
+        { time: '8:50-9:45', subject: 'MEM 303 Eng. Mechanics', teacher: 'Prof. GD', room: 'SOE H1', image: '.jpegGD' },
+        { time: '11:25-12:20', subject: 'MAM 381', teacher: '—', room: 'AH', image: 'https://via.placeholder.com/80/F39C12/ffffff?text=MAM' },
+        { time: '12:20-1:15', subject: 'EEM 303 Elec. Machines', teacher: 'Prof. TK', room: 'R7', image: 'https://via.placeholder.com/80/D35400/ffffff?text=TK' },
+        { time: '1:15-2:10', subject: 'MAM 381', teacher: '—', room: 'AH', image: 'https://via.placeholder.com/80/F39C12/ffffff?text=MAM' },
+        { time: '2:10-3:05', subject: 'EEM 302 BE Lab', teacher: 'Prof. RKC', room: 'BE Lab', image: 'https://via.placeholder.com/80/C0392B/ffffff?text=Lab' },
+        { time: '3:05-4:00', subject: 'EEM 302 BE Lab', teacher: 'Prof. RKC', room: 'BE Lab', image: 'https://via.placeholder.com/80/C0392B/ffffff?text=Lab' }
+    ],
+    FRI: [
+        { time: '8:50-9:45', subject: 'MEM 303 Eng. Mechanics', teacher: 'Prof. GD', room: 'SOE H1', image: '.jpegGD' },
+        { time: '10:30-11:25', subject: 'MEM 304 Fluid Mechanics', teacher: 'Dr. MD', room: 'SOE H1', image: 'https://via.placeholder.com/80/16A085/ffffff?text=MD' },
+        { time: '11:25-12:20', subject: 'MEM 311 Fluid Mechanics', teacher: 'Prof. ASAHAI', room: 'SOE H1', image: 'https://via.placeholder.com/80/16A085/ffffff?text=AH' },
+        { time: '12:20-1:15', subject: 'MEM 303 Eng. Mechanics', teacher: 'Prof. GD', room: 'SOE H1', image: '.jpegGD' },
+        { time: '1:15-2:10', subject: 'MEM 301 Eng. Drawing', teacher: 'Prof. ASHARMA', room: 'SOE H1', image: '.jpegAS' },
+        { time: '2:10-3:05', subject: 'ENH 381', teacher: 'Prof. Shashi', room: 'DES Block', image: 'https://via.placeholder.com/80/8E44AD/ffffff?text=ENH' }
+    ],
+    SAT: [
+        { time: '8:50-9:45', subject: 'MEM 304 Fluid Mechanics', teacher: 'Dr. MD', room: 'SOE H1', image: 'https://via.placeholder.com/80/16A085/ffffff?text=MD' },
+        { time: '10:30-11:25', subject: 'GKC 381', teacher: 'Prof. RJSK', room: 'SOE H1', image: 'https://via.placeholder.com/80/7F8C8D/ffffff?text=RJSK' },
+        { time: '11:25-12:20', subject: 'CCA', teacher: 'CCA Coordinator', room: 'Various', image: 'https://via.placeholder.com/80/95A5A6/ffffff?text=CCA' },
+        { time: '12:20-1:15', subject: 'EEM 303 Elec. Machines', teacher: 'Prof. TK', room: 'R7', image: 'https://via.placeholder.com/80/D35400/ffffff?text=TK' },
+        { time: '1:15-2:10', subject: 'MAM 381', teacher: '—', room: 'AH', image: 'https://via.placeholder.com/80/F39C12/ffffff?text=MAM' }
+    ],
+    SUN: []
+};
+        // Homework Data - Load from localStorage
+        let homeworkList = JSON.parse(localStorage.getItem('homeworkList')) || [
+            { id: 1, subject: 'PHM 281', task: 'Complete Chapter 5 Problems', dueDate: '2025-12-30', completed: false },
+            { id: 2, subject: 'EEM 201 C Language', task: 'Lab Report Submission', dueDate: '2025-12-26', completed: false },
+            { id: 3, subject: 'MAM 281 Eng. Mathematics', task: 'Assignment 2', dueDate: '2025-12-28', completed: false }
+        ];
+        
+        // Save homework to localStorage
+        function saveHomework() {
+            localStorage.setItem('homeworkList', JSON.stringify(homeworkList));
+        }
+        
+        // Get current day
+        function getCurrentDay() {
+            const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+            return days[new Date().getDay()];
+        }
+        
+        // Initialize
+        let selectedDay = getCurrentDay();
+        
+        function init() {
+            const today = getCurrentDay();
+            document.getElementById('currentDay').textContent = today;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', options);
+            
+            // Mark current day button
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                const day = btn.textContent.trim();
+                if (day === today) {
+                    btn.classList.add('current');
+                }
+                if (day === selectedDay) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            displayLectures();
+            displayHomework();
+        }
+        
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function selectDay(day) {
+            selectedDay = day;
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.trim() === day) {
+                    btn.classList.add('active');
+                }
+            });
+            displayLectures();
+        }
+        
+        function displayLectures() {
+            const container = document.getElementById('lecturesContainer');
+            const lectures = timetable[selectedDay];
+            
+            if (!lectures || lectures.length === 0) {
+                container.innerHTML = '<div class="no-lectures">😊 No classes today! Enjoy your day!</div>';
+                return;
+            }
+            
+            container.innerHTML = lectures.map(lecture => `
+                <div class="lecture-card">
+                    <div class="lecture-header">
+                        <img src="${lecture.image}" alt="${lecture.teacher}" class="lecture-icon" onerror="this.src='https://via.placeholder.com/80/667eea/ffffff?text=${lecture.teacher.charAt(0)}'">
+                        <div class="lecture-info">
+                            <div class="lecture-title">${lecture.subject}</div>
+                            <span class="lecture-time">🕐 ${lecture.time}</span>
+                        </div>
+                    </div>
+                    <div class="lecture-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">👤</span>
+                            <strong>${lecture.teacher}</strong>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📍</span>
+                            ${lecture.room}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function addHomework() {
+            const subject = document.getElementById('hwSubject').value.trim();
+            const task = document.getElementById('hwTask').value.trim();
+            const dueDate = document.getElementById('hwDueDate').value;
+            
+            if (!subject || !task || !dueDate) {
+                alert('Please fill all fields!');
+                return;
+            }
+            
+            homeworkList.push({
+                id: Date.now(),
+                subject: subject,
+                task: task,
+                dueDate: dueDate,
+                completed: false
+            });
+            
+            saveHomework(); // Save to localStorage
+            
+            document.getElementById('hwSubject').value = '';
+            document.getElementById('hwTask').value = '';
+            document.getElementById('hwDueDate').value = '';
+            
+            displayHomework();
+        }
+        
+        function toggleHomework(id) {
+            const hw = homeworkList.find(h => h.id === id);
+            if (hw) {
+                hw.completed = !hw.completed;
+                saveHomework(); // Save to localStorage
+                displayHomework();
+            }
+        }
+        
+        function deleteHomework(id) {
+            homeworkList = homeworkList.filter(h => h.id !== id);
+            saveHomework(); // Save to localStorage
+            displayHomework();
+        }
+        
+        function isOverdue(dueDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const due = new Date(dueDate);
+            due.setHours(0, 0, 0, 0);
+            return due < today;
+        }
+        
+        function displayHomework() {
+            const container = document.getElementById('homeworkContainer');
+            
+            // Sort homework
+            const sorted = [...homeworkList].sort((a, b) => {
+                if (a.completed && !b.completed) return 1;
+                if (!a.completed && b.completed) return -1;
+                return new Date(a.dueDate) - new Date(b.dueDate);
+            });
+            
+            if (sorted.length === 0) {
+                container.innerHTML = '<div class="no-lectures">📝 No homework yet. Add some above!</div>';
+                return;
+            }
+            
+            container.innerHTML = sorted.map(hw => {
+                const overdue = !hw.completed && isOverdue(hw.dueDate);
+                const cardClass = hw.completed ? 'completed' : (overdue ? 'overdue' : '');
+                const subjectClass = hw.completed ? 'completed' : (overdue ? 'overdue' : '');
+                const taskClass = overdue ? 'overdue' : '';
+                const dueClass = overdue ? 'overdue' : '';
+                
+                return `
+                    <div class="homework-card ${cardClass}">
+                        <div class="homework-header">
+                            <input type="checkbox" class="homework-checkbox" 
+                                   ${hw.completed ? 'checked' : ''} 
+                                   onchange="toggleHomework(${hw.id})">
+                            <div class="homework-content">
+                                <div class="homework-subject ${subjectClass}">
+                                    ${hw.subject}
+                                    ${overdue ? '<span class="overdue-badge">⚠️ OVERDUE!</span>' : ''}
+                                </div>
+                                <div class="homework-task ${taskClass}">${hw.task}</div>
+                                <div class="homework-due ${dueClass}">
+                                    🕐 Due: ${new Date(hw.dueDate).toLocaleDateString('en-IN')}
+                                </div>
+                            </div>
+                            <button class="btn-delete" onclick="deleteHomework(${hw.id})">✕</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+
+</html>
