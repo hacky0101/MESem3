@@ -1,99 +1,528 @@
-body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        h1 {
-    text-align: center;
+/* =========================================
+   MESEM3 PROFESSIONAL PAGE DESIGN
+   Theme: Navy + Blue + Purple
+========================================= */
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #172554;
+    --secondary: #7c3aed;
+    --accent: #06b6d4;
+
+    --dark: #0f172a;
+    --text: #1e293b;
+    --muted: #64748b;
+
+    --background: #f1f5f9;
+    --card: #ffffff;
+
+    --border: #e2e8f0;
 }
-        .header {
-            background-color: #ffc107;
-            color: black;
-            text-align: center;
-            padding: 10px;
-            position: relative;
-            font-size: 1.2em;
-            font-weight: bold;
-            overflow: hidden;
-        }
-        .header-text {
-            display: inline-block;
-            white-space: nowrap;
-            animation: move 10s linear infinite;
-        }
-        @keyframes move {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .content-list {
-            padding: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .item {
-            display: flex;
-            align-items: center;
-            background-color: white;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            cursor: pointer;
-        }
-        .item-number {
-            width: 30px;
-            height: 30px;
-            background-color: #ffc107;
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        .item-title {
-            font-size: 1em;
-            color: black;
-            font-weight: bold;
-        }
+
+
+/* =========================================
+   BODY
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    padding: 0;
+
+    min-height: 100vh;
+
+    color: var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at top left,
+            #dbeafe,
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at bottom right,
+            #ede9fe,
+            transparent 40%
+        ),
+
+        var(--background);
+
+}
+
+
+h1 {
+
+    text-align: center;
+
+    color: var(--dark);
+
+    margin: 25px 15px 20px;
+
+    font-size: 1.6rem;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #020617,
+            #172554 50%,
+            #2563eb
+        );
+
+    color: white;
+
+    text-align: center;
+
+    padding: 12px 20px;
+
+    font-size: 1.2em;
+
+    font-weight: bold;
+
+    overflow: hidden;
+
+    border-bottom:
+
+        3px solid var(--accent);
+
+    box-shadow:
+
+        0 6px 20px
+        rgba(15,23,42,0.25);
+
+}
+
+
+.header-text {
+
+    display: inline-block;
+
+    white-space: nowrap;
+
+    letter-spacing: 0.7px;
+
+    text-shadow:
+
+        0 2px 8px
+        rgba(0,0,0,0.4);
+
+    animation:
+
+        move 12s linear infinite;
+
+}
+
+
+@keyframes move {
+
+    0% {
+
+        transform: translateX(100%);
+
+    }
+
+    100% {
+
+        transform: translateX(-100%);
+
+    }
+
+}
+
+
+/* =========================================
+   CONTENT LIST
+========================================= */
+
+.content-list {
+
+    padding: 25px 15px 80px;
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================
+   MAIN ITEM CARD
+========================================= */
+
+.item {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+
+        rgba(255,255,255,0.95);
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+    border-radius: 14px;
+
+    border:
+
+        1px solid var(--border);
+
+    box-shadow:
+
+        0 5px 18px
+        rgba(15,23,42,0.07);
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+
+/* LEFT COLOR ACCENT */
+
+.item::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 4px;
+
+    height: 100%;
+
+    background:
+
+        linear-gradient(
+            #2563eb,
+            #7c3aed
+        );
+
+}
+
+
+/* HOVER EFFECT */
+
+.item:hover {
+
+    transform:
+
+        translateY(-3px);
+
+    border-color:
+
+        #93c5fd;
+
+    box-shadow:
+
+        0 12px 28px
+        rgba(37,99,235,0.15);
+
+}
+
+
+/* =========================================
+   ITEM NUMBER
+========================================= */
+
+.item-number {
+
+    min-width: 38px;
+
+    width: 38px;
+
+    height: 38px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    margin-right: 13px;
+
+    font-weight: bold;
+
+    box-shadow:
+
+        0 5px 12px
+        rgba(37,99,235,0.25);
+
+}
+
+
+/* =========================================
+   ITEM TITLE
+========================================= */
+
+.item-title {
+
+    font-size: 0.95em;
+
+    color: var(--dark);
+
+    font-weight: bold;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================
+   SUB LINKS
+========================================= */
+
+.sub-links {
+
+    display: none;
+
+    margin:
+
+        -5px 0 15px 48px;
+
+    padding:
+
+        8px 0;
+
+    border-left:
+
+        2px solid #c7d2fe;
+
+}
+
+
+/* SUB LINK */
+
+.sub-links a {
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+
+        rgba(255,255,255,0.95);
+
+    padding:
+
+        10px 13px;
+
+    margin:
+
+        7px 0 7px 12px;
+
+    border-radius:
+
+        10px;
+
+    text-decoration:
+
+        none;
+
+    color:
+
+        #334155;
+
+    font-size:
+
+        0.9em;
+
+    font-weight:
+
+        600;
+
+    border:
+
+        1px solid #e2e8f0;
+
+    box-shadow:
+
+        0 3px 10px
+        rgba(15,23,42,0.05);
+
+    transition:
+
+        all 0.2s ease;
+
+}
+
+
+/* SUB LINK HOVER */
+
+.sub-links a:hover {
+
+    color:
+
+        white;
+
+    border-color:
+
+        transparent;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    transform:
+
+        translateX(4px);
+
+    box-shadow:
+
+        0 6px 15px
+        rgba(37,99,235,0.20);
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    h1 {
+
+        font-size:
+
+            1.35rem;
+
+        margin:
+
+            20px 10px 15px;
+
+    }
+
+
+    .content-list {
+
+        padding:
+
+            18px 10px 70px;
+
+    }
+
+
+    .item {
+
+        padding:
+
+            12px;
+
+        border-radius:
+
+            12px;
+
+    }
+
+
+    .item-number {
+
+        min-width:
+
+            32px;
+
+        width:
+
+            32px;
+
+        height:
+
+            32px;
+
+        font-size:
+
+            0.85em;
+
+        border-radius:
+
+            9px;
+
+        margin-right:
+
+            10px;
+
+    }
+
+
+    .item-title {
+
+        font-size:
+
+            0.85em;
+
+    }
+
 
     .sub-links {
-      display: none;
-      margin-left: 40px;
-      margin-bottom: 10px;
+
+        margin-left:
+
+            35px;
+
     }
-    
+
+
     .sub-links a {
-      display: block;
-      background: #fff;
-      padding: 8px;
-      margin: 5px 0;
-      border-radius: 5px;
-      text-decoration: none;
-      color: black;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        padding:
+
+            9px 10px;
+
+        font-size:
+
+            0.82em;
+
     }
-    
-    .sub-links a:hover {
-      background-color: #ffc107;
-    }
-    
- 
-        @media (max-width: 400px) {
-            .content-list {
-                padding: 10px;
-            }
-            .item {
-                padding: 8px;
-            }
-            .item-number {
-                width: 25px;
-                height: 25px;
-                font-size: 0.9em;
-            }
-            .item-title {
-                font-size: 0.9em;
-            }
-        }
+
+}
