@@ -6,23 +6,46 @@
 <title>BTECH M.E. III SEM</title>
 
 <style>
+/* =========================
+   PROFESSIONAL COLOR THEME
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    min-height: 100vh;
+
+    /* Soft professional background */
+    background: linear-gradient(135deg, #f4f7fb, #e8eef7);
+    color: #1e293b;
 }
 
-/* Header */
+
+/* =========================
+   HEADER
+   ========================= */
+
 .header {
     position: relative;
-    background-color: #2196f3;
-    color: black;
+
+    /* Professional Navy Gradient */
+    background: linear-gradient(135deg, #0f172a, #1e3a5f, #0ea5e9);
+
+    color: white;
     text-align: center;
-    padding: 10px 70px;
+    padding: 12px 70px;
+
     font-size: 1.2em;
     font-weight: bold;
+
     overflow: hidden;
+
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.25);
 }
 
 
@@ -33,26 +56,46 @@ body {
 }
 
 
-/* Round Buttons */
+/* =========================
+   ROUND BUTTONS
+   ========================= */
+
 .tt-btn,
 .cms-btn,
 .books-btn,
 .link-btn {
     position: absolute;
-    top: 5px;
-    width: 32px;
-    height: 32px;
-    border: none;
+    top: 6px;
+
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50%;
-    background: #000;
-    color: #fff;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+
+    color: #ffffff;
+
     font-size: 8px;
     font-weight: bold;
+
     cursor: pointer;
     padding: 0;
+
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+
+    transition: 
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
+
+
+/* Button Positions */
 
 .cms-btn {
     left: 8px;
@@ -61,119 +104,321 @@ body {
 .books-btn {
     left: 48px;
 }
+
 .tt-btn {
     right: 48px;
 }
+
 .link-btn {
     right: 8px;
 }
+
+
+/* Button Hover */
 
 .cms-btn:hover,
 .tt-btn:hover,
 .books-btn:hover,
 .link-btn:hover {
-    transform: scale(1.05);
+
+    background: #38bdf8;
+
+    transform: scale(1.12);
+
+    box-shadow: 0 5px 14px rgba(0,0,0,0.35);
 }
 
-/* Moving Header Text */
+
+/* =========================
+   MOVING HEADER TEXT
+   ========================= */
+
 .header-text {
+
     display: inline-block;
+
     white-space: nowrap;
+
+    letter-spacing: 0.5px;
+
     animation: move 10s linear infinite;
 }
 
+
 @keyframes move {
+
     0% {
         transform: translateX(100%);
     }
+
     100% {
         transform: translateX(-100%);
     }
+
 }
 
-/* Tabs */
+
+/* =========================
+   TABS
+   ========================= */
+
 .tabs {
+
     display: flex;
+
     justify-content: center;
-    background-color: #fff;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    background: #ffffff;
+
+    padding: 12px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
 }
+
 
 .tab {
-    margin: 0 10px;
-    padding: 5px 15px;
+
+    padding: 7px 18px;
+
     cursor: pointer;
-    background-color: #000;
-    color: white;
+
+    /* Light professional background */
+
+    background: #f1f5f9;
+
+    color: #334155;
+
+    border: 1px solid #e2e8f0;
+
     border-radius: 20px;
+
     font-size: 0.9em;
+
     font-weight: bold;
+
+    transition: 
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
+
+
+.tab:hover {
+
+    background: #e0f2fe;
+
+    color: #0369a1;
+
+    transform: translateY(-1px);
+
+}
+
 
 .tab.active {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #000;
+
+    /* Active Tab */
+
+    background: linear-gradient(135deg, #0284c7, #0ea5e9);
+
+    color: white;
+
+    border: 1px solid #0284c7;
+
+    box-shadow: 0 3px 8px rgba(14,165,233,0.3);
+
 }
 
-/* Content List */
+
+/* =========================
+   CONTENT LIST
+   ========================= */
+
 .content-list {
-    padding: 20px;
-    max-width: 400px;
+
+    padding: 22px 15px;
+
+    max-width: 500px;
+
     margin: 0 auto;
+
 }
+
+
+/* =========================
+   SUBJECT CARDS
+   ========================= */
 
 .item {
+
     display: flex;
+
     align-items: center;
+
     font-weight: bold;
-    background-color: white;
-    padding: 10px;
+
+    background: rgba(255,255,255,0.95);
+
+    padding: 13px;
+
     text-decoration: none;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow: 0 3px 10px rgba(15,23,42,0.06);
+
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+
 }
+
+
+.item:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #38bdf8;
+
+    box-shadow: 0 8px 20px rgba(14,165,233,0.15);
+
+}
+
+
+/* =========================
+   SUBJECT NUMBER
+   ========================= */
 
 .item-number {
-    width: 30px;
-    height: 30px;
-    background-color: #ffc107;
-    color: black;
+
+    min-width: 36px;
+
+    width: 36px;
+
+    height: 36px;
+
+    /* Blue Gradient Accent */
+
+    background: linear-gradient(
+        135deg,
+        #0284c7,
+        #0ea5e9
+    );
+
+    color: white;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    border-radius: 5px;
-    margin-right: 10px;
+
+    border-radius: 10px;
+
+    margin-right: 12px;
+
+    font-weight: bold;
+
+    box-shadow: 0 3px 8px rgba(14,165,233,0.25);
+
 }
+
+
+/* =========================
+   SUBJECT TITLE
+   ========================= */
 
 .item-title {
-    font-size: 1em;
-    color: #333;
+
+    font-size: 0.95em;
+
+    color: #1e293b;
+
+    line-height: 1.4;
+
 }
+
+
+.item-title i {
+
+    color: #64748b;
+
+    font-weight: 500;
+
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
 
 @media (max-width: 400px) {
+
     .content-list {
-        padding: 10px;
+
+        padding: 15px 10px;
+
     }
+
 
     .item {
-        padding: 8px;
+
+        padding: 11px;
+
     }
+
 
     .item-number {
-        width: 25px;
-        height: 25px;
-        font-size: 0.9em;
+
+        min-width: 30px;
+
+        width: 30px;
+
+        height: 30px;
+
+        font-size: 0.85em;
+
+        border-radius: 8px;
+
     }
 
+
     .item-title {
-        font-size: 0.9em;
+
+        font-size: 0.85em;
+
     }
-}
-</style>
+
+
+    .tabs {
+
+        gap: 5px;
+
+    }
+
+
+    .tab {
+
+        padding: 6px 12px;
+
+        font-size: 0.8em;
+
+    }
+
+}</style>
 
 </head>
 
