@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENH 381 ENGLISH-III Complete Question Bank (Topic-wise)</title>
+    <style>
+        body {
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+        }
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+        .menu-button {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        .menu-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+        }
+        .round-button {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            opacity: 0;
+            transform: scale(0);
+            top: 0;
+            right: 0;
+        }
+        .controls.active .round-button {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .round-button:nth-child(2) {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            transition-delay: 0.1s;
+            top: 56px;
+            right: 0;
+        }
+        .round-button:nth-child(3) {
+            background: linear-gradient(135deg, #1e90ff, #00b4d8);
+            transition-delay: 0.2s;
+            top: 112px;
+            right: 0;
+        }
+        .round-button:nth-child(4) {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            transition-delay: 0.3s;
+            top: 168px;
+            right: 0;
+        }
+        .round-button:nth-child(5) {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            transition-delay: 0.4s;
+            top: 224px;
+            right: 0;
+        }
+        .round-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+        }
+        .round-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .round-button::before, .menu-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        .round-button:hover::before, .menu-button:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        .round-button span, .menu-button span {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="menu-button" onclick="toggleMenu()" title="Toggle Menu"><span>☢️</span></button>
+        <button class="round-button" onclick="toggleDarkMode()" title="Toggle Dark Mode"><span>🌙</span></button>
+        <button class="round-button" onclick="increaseFontSize()" title="Increase Font Size"><span>+</span></button>
+        <button class="round-button" onclick="decreaseFontSize()" title="Decrease Font Size"><span>-</span></button>
+        <button class="round-button" onclick="printPage()" title="Print Page"><span>🖨️</span></button>
+    </div>
+
+    <h3 style="text-align:center"><span style="font-family:Arial,Helvetica,sans-serif"><span style="color:#ff0000"><span style="font-size:20px"><strong>ENH 381: ENGLISH—III</strong></span></span></span></h3>
+    <p style="text-align:center"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:15px"><strong>COMPLETE QUESTION BANK – TOPIC WISE</strong><br>
+    Class: B.Tech. Mechanical Engineering | Faculty of Arts, DEI<br>
+    Session 2026-2027 | Includes CT-I (05 October 2026)</span></span></p>
+
+    <!-- ===================== TOPIC 1: READING COMPREHENSION ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>TOPIC 1: READING COMPREHENSION</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>1.1 Comprehension Passages</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q1.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2024-2025)</span><br>
+    <strong>Exam Reading Text / Reference Passage (Reading & Imagination):</strong><br>
+    Reading is a fundamental skill that plays a vital role in our lives. It's not just about deciphering words on a page but about the doors it opens, the knowledge it imparts, and the worlds it allows us to explore. Reading is an essential tool for learning, expanding our horizons, and fostering imagination.<br><br>
+    When we read, we acquire knowledge. Whether it's reading textbooks, newspapers, or online articles, we gain information that helps us understand the world. Books, in particular, are a treasure trove of knowledge. They contain the wisdom of generations, the discoveries of great minds, and the stories of diverse cultures. Reading books can educate us on history, science, literature, and countless other subjects. It's like having a mentor, guiding us through the complexities of life.<br><br>
+    Reading also broadens our horizons. It exposes us to different viewpoints, perspectives, and experiences. When we read about characters from various backgrounds or explore far-off lands through the pages of a novel, we step into their shoes and see the world from a different angle. This broadening of perspective fosters empathy and understanding, making us more tolerant and open-minded individuals.<br><br>
+    Furthermore, reading fuels our imagination. Whether it's a fantasy novel, a science fiction story, or a compelling mystery, books transport us to other worlds and challenge us to envision the unimaginable. Our minds become the canvas, and words paint the pictures. It's a magical experience that ignites creativity and inspiration.<br><br>
+    Moreover, reading is a skill that transcends academic boundaries. It's not just about scoring well on tests; it's about developing critical thinking, analytical skills, and the ability to communicate effectively. A person who reads regularly is likely to have a broader vocabulary, better writing skills, and an improved ability to express their thoughts and ideas.<br><br>
+    In our modern digital age, reading has taken on new forms. E-books and audiobooks have made it more accessible and convenient. With just a few clicks or taps, we can access a vast library of literature. However, there's something timeless and intimate about holding a physical book, flipping its pages, and smelling the scent of paper and ink.<br><br>
+    In conclusion, reading is not just a hobby; it's a cornerstone of education, personal growth, and cultural enrichment. It empowers us with knowledge, broadens our perspectives, ignites our imagination, and equips us with essential skills. Whether we're reading for pleasure, information, or self-improvement, reading is a journey that enriches our lives and shapes us into more informed, empathetic, and creative individuals.<br><br>
+    <strong>Answer the following:</strong><br>
+    (a) Explain the meaning of (i) deciphering (ii) step into their shoes (iii) cornerstone<br>
+    (b) How does reading make us empathetic?<br>
+    (c) What according to you is the purpose of reading?<br>
+    (d) How has your reading made you better in communication? Exemplify.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q2.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2025-2026)</span><br>
+    <strong>Exam Reading Text / Reference Passage (Environmental Resources):</strong><br>
+    Earth's natural resources are not infinite and they cannot be replenished in a short period. The rapid increase in urbanization has used most of the resources like trees, minerals, fossil fuels, and water. Humans in their quest for a comfortable living have been using the resources of nature mindlessly. As a result, massive deforestation, resultant environmental pollution, wildlife destruction, and global warming are posing great threats to the survival of living beings.<br><br>
+    Air that gives us oxygen to breathe is getting polluted by smoke, industrial emissions, automobile exhaust, burning of fossil fuels like coal, coke and furnace oil, and use of certain chemicals. The garbage and wastes thrown here and there cause pollution of air and land.<br><br>
+    Sewage, organic wastage, industrial wastage, oil spillage, and chemicals pollute water. It is causing several water-borne diseases like cholera, jaundice and typhoid.<br><br>
+    The use of pesticides and chemical fertilizers in agriculture adds to soil pollution. Due to the mindless cutting of trees and demolition of greeneries for industrialization and urbanization, the ecological balance is greatly hampered. Deforestation causes flood and soil erosion.<br><br>
+    Earth has now become an ailing planet panting for care and nutrition for its rejuvenation. Unless mankind puts its best effort to save nature from these recurring situations, the Earth would turn into an unfit landmass for life and activity.<br><br>
+    We should check deforestation and take up the planting of trees at a massive rate. It will not only save the animals from being extinct but also help create regular rainfall and preserve soil fertility. We should avoid over-dependence on fossil fuels like coal, petroleum products, and firewood which release harmful pollutants to the atmosphere. Non-conventional sources of energy like the sun, biogas and wind should be tapped to meet our growing need for energy. It will check and reduce global warming.<br><br>
+    Every drop of water is vital for our survival. We should conserve water by its rational use, rainwater harvesting, checking the surface outflow, etc. Industrial and domestic wastes should be properly treated before they are dumped into water bodies.<br><br>
+    Every individual can do his or her bit of responsibility to help save the nature around us. To build a sustainable society, every human being should practice in heart and soul the three R's of Reduce, Reuse, and Recycle. In this way, we can save our nature.<br><br>
+    <strong>Answer the following:</strong><br>
+    (a) Suggest an appropriate title to the above passage.<br>
+    (b) Give the meaning of the underlined words in the passage.<br>
+    (c) Who do you think is responsible for the pitiable state of the earth?<br>
+    (d) What is the message of this passage?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>1.2 Theory & Competitive Exams</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q3.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    Why do you think that the questions based on the Reading Comprehension are an important part of the competitive exams? What tips for attempting these successfully, would you give to the students who are appearing in these exams?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q4.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    Assess the importance of Comprehension exercises in the competitive exams.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q5.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2021-2022)</span><br>
+    What are the factors on which good comprehension depends? Mention the basic rules for faster comprehension.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q6. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 1)</span><br>
+    Your younger brother is appearing for a competitive exam. What guidelines would you give him to prepare well to solve a passage based on Comprehension?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q7. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 1)</span><br>
+    “Comprehension cannot be taught directly, it develops only through practice.” Express your opinion on the given statement.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>1.3 Reading Techniques & Methods</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q8.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2022-2023)</span><br>
+    Define skimming and scanning. Discuss their advantages.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q9.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam 2022-2023 / End Semester Exam Jan 2021 / End Semester Exam 2021)</span><br>
+    Differentiate between (i) skimming and scanning, and (ii) intensive and extensive reading.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q10.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2024-2025)</span><br>
+    Write short notes on: Techniques involved in the Reading of Text books.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q11.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    In the words of Stephen King, "Books are a uniquely portable magic." Suggest a suitable method of reading to your younger sister to enjoy this magic in the present digital age, explaining her the application of the same.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q12. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 3)</span><br>
+    The Type or Method of Reading that you find best to practise for your studies. (Write a Paragraph in 250-300 words)</span></span></p>
+
+    <!-- ===================== TOPIC 2: LISTENING SKILLS ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>TOPIC 2: LISTENING SKILLS</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>2.1 Process, Types & Barriers</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q13.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2022-2023 / 2021-2022 / End Semester Exam Jan 2021)</span><br>
+    What are the barriers to listening? Discuss with examples.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q14.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2022-2023)</span><br>
+    Discuss the process of listening. What are the various types of listening?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q15.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2021-2022)</span><br>
+    Discuss the process of listening. Which are the various types of listening?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q16.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, Session 2022-2023)</span><br>
+    Discuss the process of listening. What are the barriers to listening?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q17.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    Discuss the various ways to overcome the barriers to listening.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q18. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 1)</span><br>
+    Mention the factors that you would apply to make your listening more effective.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>2.2 Classroom & Event Listening</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q19.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2024-2025)</span><br>
+    Write short notes on: Measures to be adopted for an effective listening of the GDs of your classmates in the course ENH 381.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q20.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    A Special Guest Lecture is being organized in your Faculty of Engineering. Think of the measures that you would take to make it a successful listening event.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q21. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 3)</span><br>
+    Techniques or Methods that you think are appropriate to evaluate listening skills. (Write a Paragraph in 250-300 words)</span></span></p>
+
+    <!-- ===================== TOPIC 3: ORGANISATIONAL COMMUNICATION ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>TOPIC 3: ORGANISATIONAL COMMUNICATION</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>3.1 Levels, Flow & Networks</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q22.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2021-2022 / End Semester Exam, Session 2022-2023)</span><br>
+    How does communication flow in an organisation?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q23.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam – Jan 2021, Session 2020-21)</span><br>
+    What are the two communication networks prevalent in an organisation? Discuss the advantages and disadvantages of the grapevine.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q24.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    It is believed that the term "grapevine's origin goes back to the Civil War when telegraph lines hung through trees and looked like tangled grapevines. How far do you think that these grapevines prove to be beneficial in any organization?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q25. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 2)</span><br>
+    How far do you think that the ‘Grapevine Communication’ can bring significant positive changes in an institution?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q26.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2022-2023)</span><br>
+    What are the various levels of communication? Discuss the advantages of mass communication.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q27.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    What are the various levels of communication? Write about them in short.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q28.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2025-2026)</span><br>
+    Mention some of the effective measures that you would adopt to overcome barriers to communication in your formal circle.</span></span></p>
+
+    <!-- ===================== TOPIC 4: BUSINESS LETTERS ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>TOPIC 4: BUSINESS / FORMAL LETTER WRITING</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>4.1 Principles, Style & Layout</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q29.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    What are the basic principles of effective business correspondence? Discuss.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q30.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2022-2023 / 2021-2022)</span><br>
+    Discuss the various parts of a business letter.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q31.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    Discuss the style and layout of a business letter in short.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q32.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, Session 2022-2023 / End Semester Exam – Jan 2021)</span><br>
+    Differentiate between the opening and the closing paragraphs of a letter. How can you make them effective?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>4.2 Letters of Inquiry</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q33.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2024-2025)</span><br>
+    In an advertisement published in the Indian Express, Tata Motors has announced the launch of a fully automatic car on the festival of Deepawali. Write a letter to the local dealer of the Company seeking detailed information for the same.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q34.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2022-2023)</span><br>
+    In response to an advertisement for a product you would like to purchase, write a letter to the company asking for the information you would like to have before buying the product.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q35. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 2)</span><br>
+    You have been asked to purchase twenty desktops for your laboratory. Write a letter to a dealer seeking enquiry about the details of desktops.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>4.3 Letters of Complaint</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q36.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    One of the firms has received some damaged sofa sets for their new showroom. Write a letter of Complaint to the local furniture dealer for the same and ask for replacement at the earliest.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q37.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2021-2022)</span><br>
+    On behalf of the store-keeper of ABC Firm, write a letter of complaint to a local vendor for sending goods which are different from what was ordered. Ask for immediate replacement.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q38. (CT-I, 05 October 2026)</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(8 Marks | CO 2)</span><br>
+    Write a letter of Complaint to the Manager, Torrent Power Ltd. for constant fluctuation of electric supply in your residential area and the problems that you all are facing due to the same.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>4.4 Goodwill Letters</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q39.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    Write an appealing Goodwill letter to a grief stricken Manager of a company, who has suffered great loss in his business due to floods in Kerala.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q40.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2025-2026)</span><br>
+    Draft a suitable Goodwill letter for a Company that has lost everything as fire broke out in their Company.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q41.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2024-2025)</span><br>
+    Write short notes on: Role of Goodwill messages in the competitive rush today.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>4.5 Resumes & Job Applications</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q42.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2024-2025)</span><br>
+    What content or style in your Resume do you think would attract the employers to shortlist you for the selection process? Mention the ways that you would adopt to make it eye-catching.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q43.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    Draft a Job Application Letter to the following advertisement:<br>
+    "Wanted a Software Engineer for a new branch in Gurugram. Engineering Graduates with minimum two years' experience in this field may apply. Salary is negotiable. Apply with particulars to Box 900, The Times of India, New Delhi, latest by 30th September, 2025"</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q44.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    Create an impressive Resume to be attached with the above application.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q45.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, Session 2022-2023)</span><br>
+    Assuming that you have the requisite credentials, draft a job application letter in response to the following advertisement:<br>
+    "Wanted a Plant Manager (Operations) at our new factory in Noida. Engineering graduates with a minimum of 5 years of experience in manufacturing industries as Plant Managers can apply. The salary is negotiable. Apply with particulars to Box 650, The Hindu, Chennai–600004, latest by 30th December 2022."</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q46.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam – Jan 2021, Session 2020-2021)</span><br>
+    Assuming that you have the requisite credentials, draft a job application letter in response to the following advertisement:<br>
+    "Wanted a Plant Manager (Operations) at our new factory in Noida. Engineering graduates with a minimum of 5 years' experience in manufacturing industries as Plant Manager can apply. Salary is negotiable. Apply with particulars to Box 650, The Hindu, Chennai–600004, latest by 30th January 2021."</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q47.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    Draft an application for the post of Junior Engineer at Pioneers (Pvt.) Ltd., Hyderabad, in response to their advertisement that appeared in The Times of India dated 10 December 2021.</span></span></p>
+
+    <!-- ===================== TOPIC 5: PARAGRAPH & PRÉCIS ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>TOPIC 5: PARAGRAPH WRITING & PRÉCIS</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>5.1 Paragraph Writing</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q48.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    Write a paragraph of about 250 words analyzing the advantages of Mass Communication.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q49.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(First Class Test CT1, 2025-2026)</span><br>
+    Evaluate the Process of Communication prevalent in the educational institutions in the 21st century in a paragraph of 250 words.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q50.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Paragraph writing is a significant productive skill, integrating both composing and organising skills. Discuss.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q51.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    Define a paragraph. Discuss the major components of a paragraph.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q52.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    Write short notes on: Measures to be adopted for inspiring the readers to read the entire Paragraph.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q53.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Write a paragraph of about 250 words on the topic: 'The world is full of poisonous substances' and observe the principles of paragraph writing.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q54.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2025-2026)</span><br>
+    Write a short Paragraph on the adverse role of AI in creativity of the students.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>5.2 Précis Writing</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q55.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, Session 2022-2023 / End Semester Exam, 2021)</span><br>
+    Define précis. Discuss the essential principles of a good précis.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q56.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Brevity is the essence of a good précis. Elaborate on the statement and reflect on the common mistakes committed while drafting a précis.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q57.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, Session 2022-2023 / End Semester Exam – Jan 2021)</span><br>
+    Define précis. Discuss the method of preparing a précis.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q58.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    Write short notes on: Significance of brevity in a Precis.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q59.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2025-2026)</span><br>
+    Make a comparative analysis between a Precis and a Paragraph/Expansion. How has the learning of both enhanced your skills?</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q60.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2024-2025)</span><br>
+    <strong>Exam Reference Passage for Précis Writing:</strong><br>
+    To achieve a continuous improvement in the quality of the environment demands perception, education, economic strength, research, plus policies and administration geared to the right aims. A process of constant appraisal and adjustment is necessary, for as the scope of existing problems is reduced new ones will arise. Fresh discoveries will bring fresh difficulties—and will always do so. As Goethe said, "Every solution of a problem is a new problem." Of first importance is the capacity to perceive the essentials of society's existence, to be able to analyse the factors that create and enhance the environment and to relate these to the contemporary situation. If people are to understand, they must be offered ideas which widen their horizons; ideas to excite them to an awareness of a deeper purpose in their living and to a new relationship with their environment. The challenge is to find and capture these ideas and to put them over with vigour to hold and inspire people. Although much remains to be understood, we do have a sufficient basis of knowledge and ideas to make it possible for us to create a new fabric for man and his physical environment.<br><br>
+    People must know the implications of their tastes and preferences; for example, that consuming vast quantities of newspaper and magazines imperils the forests; that veneering furniture requires the chopping down of certain trees; that growing speck-free fruits and vegetables needs the use of chemicals; that using certain types of indestructible plastics involves special methods of refuse disposal; that an open coal fire leads to air pollution; and so on. People cannot both demand a product and oppose the means of getting it. Knowing what lies behind the chosen product is not, in itself, enough. People be helped to develop some criteria so that they can demand alternatives and can judge what shortcomings may be due to plain mismanagement.<br><br>
+    <strong>Task:</strong> Read the text carefully and prepare a précis of the text above.</span></span></p>
+
+    <!-- ===================== TOPIC 6: SCIENTIFIC & TECHNICAL WRITING ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>TOPIC 6: SCIENTIFIC WRITING & TECHNICAL PROPOSALS</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>6.1 Theory</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q61.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.1 CT1, Session 2022-2023 / 2021-2022)</span><br>
+    What do you mean by technical communication? Mention its purpose and features.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q62.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, Session 2022-23)</span><br>
+    What do you mean by scientific writing? Discuss its characteristics.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q63.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    Discuss the features of scientific writing. Mention the various kinds of scientific documents required in a business organization.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q64.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Do technical and scientific documents enrich the existing state of information and knowledge in professional fields? Justify your opinion with examples.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>6.2 Technical Proposals</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q65.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2 / End Semester Exam various years)</span><br>
+    What do you understand by technical proposals? Mention the contents of a technical proposal.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q66.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Technical proposals are a persuasive blend of information, organisation, and reason. How does it contribute to the growth of an organisation? Also discuss the professional skills involved in writing an impressive proposal.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q67.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2025-2026)</span><br>
+    An Unsolicited Proposal is a significant medium to present and establish innovative ideas in business. Mention your views on the given statement, highlighting the features and significance of the same.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q68.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2024-2025)</span><br>
+    Discuss the professional and academic advantages of initiating proposal writing in the modern era of competition and technological revolution.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q69.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Prepare an unsolicited proposal for setting-up a Literary club in the university providing all the details—need, scope, background, expenses, etc.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q70.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    It is said that persuasion is the essence of a Proposal. Keeping the same in mind, draft a Proposal for a central reading room in your faculty equipped with Wi-Fi, Desktops, Photocopiers and Digital Library for the students. Mention the type of the Proposal this would be and justify the same.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q71.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, Session 2022-2023 / End Semester Exam – Jan 2021)</span><br>
+    Write a technical proposal to the head of your organization for building a new computer wing on the premises. Invent necessary details along with the cost estimate.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q72.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    How far do you think that the course ENH 381 has made your technical writing skills more effective and enabled you to communicate with the standard norms for the same.</span></span></p>
+
+    <!-- ===================== TOPIC 7: ESSAY & EXPANSION ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>TOPIC 7: ESSAY WRITING & EXPANSION OF IDEAS</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>7.1 Essay Writing</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q73.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, Session 2022-2023)</span><br>
+    What is an essay? Write a note on the distinct features of a good essay. Briefly discuss the types of essays.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q74.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2024-2025)</span><br>
+    Based on your knowledge of essay writing express your opinion on the topic: Role of Social Media in Skill Development in 450 to 500 words.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q75.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Write an essay of about 400-450 words on the topic: 'Educational institutions— Drivers of inquiry and innovation.'</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q76.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2024-2025)</span><br>
+    Write an essay of about 500 words on any ONE of the following topics:<br>
+    (i) Robots would replace the Engineers in the next ten years.<br>
+    (ii) Improving the sustainable conditions on the earth is better than exploring the space.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q77.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, Session 2022-2023)</span><br>
+    Write an essay of about 350-400 words on any one topic:<br>
+    a) Science, Security and Health<br>
+    b) Pollution and Urbanisation<br>
+    c) Sports</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>7.2 Expansion of Proverbs & Statements</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q78.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2024-2025)</span><br>
+    Expand the learning, infused in the proverbs with illustrations. Attempt any One of the following.<br>
+    (i) Actions speak louder than words.<br>
+    (ii) Work is worship.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q79.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, 2025-2026)</span><br>
+    Expand the following proverbs in 150-200 words:<br>
+    (a) A bad workman always blames his tools.<br>
+    (b) Actions speak louder than words.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q80.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Examination, 2025-2026)</span><br>
+    Expand the ideas of each of the following in not more than 200-300 words of your own:<br>
+    (i) Strive not to be a success, but rather to be of value. —Albert Einstein<br>
+    (ii) Don't put off until tomorrow what you can do today.</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q81.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(Class Test No.2 CT2, Session 2022-2023)</span><br>
+    Write the expansion of any two of the following in 100-150 words each:<br>
+    (a) Don't judge a book by its cover<br>
+    (b) Many hands make light work<br>
+    (c) Actions speak louder than words</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q82.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, Session 2022-2023)</span><br>
+    Expand any two of the following proverbs into a passage of about 100 words each:<br>
+    (a) "Look before you leap"<br>
+    (b) "Fortune favours the bold"<br>
+    (c) "Cut your coat according to your cloth"</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q83.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam – Jan 2021, Session 2020-2021)</span><br>
+    Expand any two of the following proverbs into a passage of about 100 words each:<br>
+    (a) "Rome was not built in a day"<br>
+    (b) "Failures are the pillars of success"<br>
+    (c) "Cut your coat according to your cloth"</span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>Q84.</strong></span> <span style="color:#666; font-size:13px; font-style:italic">(End Semester Exam, 2021)</span><br>
+    Expand any two of the following proverbs into a passage of about 100 words each:<br>
+    (a) "The early bird catches the worm"<br>
+    (b) "A bird in hand is worth two in the bush"<br>
+    (c) "Actions speak louder than words"</span></span></p>
+
+    <!-- ===================== ADDITIONAL CHAPTER-WISE QUESTIONS ===================== -->
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#c0392b"><strong>ADDITIONAL CHAPTER-WISE QUESTIONS (Session July 2026)</strong></span></span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Résumé / Curriculum Vitae Writing</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>DHA</strong><br>
+    8 types of resume<br>
+    what are the types of resume prepare a functional resume focused on the skills and strength of a candidate<br><br>
+    <strong>Additional Assignment — July 27, 2026</strong><br>
+    Write an impressive résumé for yourself, anticipating that you have passed B.Tech. and would like to apply for a job.
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Listening Skills</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>CA</strong><br>
+    What are the types of listening define in short give me one example of each<br><br>
+    <strong>DHA (O) 2 — July 14, 2026</strong><br>
+    Mention any two barriers to listening, with examples.
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Comprehension</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>CA</strong><br>
+    Define comprehension how you will increase your comprehensive skill<br><br>
+    <strong>DHA (S) 3 — July 17, 2026</strong><br>
+    What do you mean by Comprehension? What are the two ways to assess comprehension skills?<br><br>
+    <strong>CA (S) — August 11, 2026</strong><br>
+    Answer the questions based on Comprehension.
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Precise Writing</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>AA</strong><br>
+    Mention any three essential features of a good precise
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Proposals (Solicited & Unsolicited)</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>AA</strong><br>
+    How do you celebrated and unsoliciated proposal s differ from each other
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Technical Writing vs General Writing</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>AA</strong><br>
+    How does technical writing differ from general writing illustrate with an example<br><br>
+    <strong>AA</strong><br>
+    Mention two similarities and two differences between general and technical writing
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Organisational Communication</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>DHA (S) — September 1, 2026</strong><br>
+    Write a note on the advantages of Grapevine Communication in an organisation.<br><br>
+    <strong>DHA (O) — August 24, 2026</strong><br>
+    Explain the Upward Flow of Communication in an organisation with an example.<br><br>
+    <strong>CA (O) — August 21, 2026</strong><br>
+    Girls' Group: Give two examples of External–Formal Communication.<br>
+    Boys' Group: Give two examples of External–Informal Communication.
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Business / Formal Letter Writing</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>DHA (O) — August 7, 2026</strong><br>
+    Mention the essential features of the Block Style/Format of a Business Letter.<br><br>
+    <strong>Class Assignment — August 4, 2026</strong><br>
+    Write the introductory paragraph of a Letter of Complaint and a Letter of Enquiry.<br><br>
+    <strong>DHA (O) — August 3, 2026</strong><br>
+    Mention any two points that you will keep in mind while writing a letter to place an order on behalf of a company.<br><br>
+    <strong>DHA (S) 5 — July 24, 2026</strong><br>
+    Write an application to the Dean of your Faculty, requesting leave to visit your sick grandparents.<br>
+    (Follow the format explained in the class.)
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Expansion of Idioms / Proverbs / Lines from Text</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>CA (O) — August 25, 2026</strong><br>
+    Expand the idiom/phrase/line of the poem assigned to you. Also mention its significance in your life.<br><br>
+    <strong>DHA (S) — August 18, 2026</strong><br>
+    Write a paragraph to expand the idiom/proverb/line from the text assigned to each group in your class.
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Reading / Text-based Short Answer Questions</strong></span><br>
+    <span style="font-size:14px">(Qualities of an entertainer, effects of smoking, appetite & drug addiction)</span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>DHA</strong><br>
+    Explain in your own words what qualities must be present in a good entertainer<br><br>
+    <strong>DHA</strong><br>
+    Summarise the three ways in your language in which smoking can cause sudden death<br><br>
+    <strong>DHA</strong><br>
+    What is appetit why does the author call drug addiction as a an
+    </span></span></p>
+
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px"><span style="color:#243f60"><strong>Chapter / Topic: Administrative / Course-related Instructions</strong></span></span></span></p>
+    <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:16px">
+    <strong>DHA (S) 1 — July 7, 2026</strong><br>
+    Mention the details of DHA 1 and DHA 2 to be uploaded on CMS with reference to ENH 381.
+    </span></span></p>
+
+    <p style="text-align:center; margin-top:40px;"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:13px; color:#888;">
+    ENH 381 — English III | Complete Topic-wise Question Bank<br>
+    Faculty of Arts, DEI | Includes CT-I (05 October 2026)
+    </span></span></p>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.controls').classList.toggle('active');
+        }
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        function increaseFontSize() {
+            let currentSize = parseFloat(window.getComputedStyle(document.body).fontSize);
+            document.body.style.fontSize = (currentSize + 2) + 'px';
+        }
+        function decreaseFontSize() {
+            let currentSize = parseFloat(window.getComputedStyle(document.body).fontSize);
+            if (currentSize > 10) {
+                document.body.style.fontSize = (currentSize - 2) + 'px';
+            }
+        }
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
